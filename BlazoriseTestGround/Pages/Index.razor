@@ -6,14 +6,14 @@
 
 Welcome to your new app.
 
-<Switch @bind-Checked="Enabled">Krznbf</Switch>
+<Switch @bind-Checked="Enabled">Disables the numeric picker</Switch>
 
 <NumericPicker TValue="short" Min="0" Max="255" Step="1" Decimals="0" Value="@_foo.Bar.Value0" ValueChanged="@ChangeValue0" Disabled="@(!Enabled)" />
 
 @_foo.Bar.Value0
 
 @code {
-	public Boolean Enabled { get; set; }
+	public Boolean Enabled { get; set; } = true;
 
 	private Foo _foo = new();
 
