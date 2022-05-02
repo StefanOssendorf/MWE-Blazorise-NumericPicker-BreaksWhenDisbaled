@@ -1,0 +1,39 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<Switch @bind-Checked="Enabled">Krznbf</Switch>
+
+<NumericPicker TValue="short" Min="0" Max="255" Step="1" Decimals="0" Value="@_foo.Bar.Value0" ValueChanged="@ChangeValue0" Disabled="@(!Enabled)" />
+
+@_foo.Bar.Value0
+
+@code {
+	public Boolean Enabled { get; set; }
+
+	private Foo _foo = new();
+
+	private void ChangeValue0(short newValue) {
+		_foo.Bar.Value0 = newValue;
+		EnsureValue0IsGreaterThanX();
+		Console.WriteLine("ChangeValue executed. New Value {0} and actual value {1}", newValue, _foo.Bar.Value0);
+	}
+
+	private void EnsureValue0IsGreaterThanX() {
+		if( _foo.Bar.Value0 > 5 ) {
+			_foo.Bar.Value0 = 4;
+		}
+	}
+
+	public class Foo {
+		public Bar Bar { get; set; } = new();
+	}
+
+	public class Bar {
+		public short Value0 { get; set; } = 0;
+	}
+}
